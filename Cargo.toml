@@ -1,0 +1,19 @@
+[package]
+name = "datafusion-c-api"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "datafusion_c_api"
+crate-type = ["cdylib", "staticlib"]
+
+[dependencies]
+datafusion = "44.0.0"
+tokio = { version = "1.0", features = ["rt", "rt-multi-thread"] }
+arrow = "53.0.0"
+arrow-array = "53.0.0"
+arrow-schema = "53.0.0"
+libc = "0.2"
+
+[build-dependencies]
+cbindgen = "0.24"

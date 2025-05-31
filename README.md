@@ -1,39 +1,75 @@
 # DataFusion C API
 
-This project provides a C API for [Apache Arrow DataFusion](https://datafusion.apache.org/), enabling easy integration with other programming languages like Julia, Python, and more.
+This project provides a C API for [Apache Arrow DataFusion](https://datafusion.apache.org/), enabling easy integration with other programming languages. This library serves as the foundation for [DataFusion.jl](https://github.com/vustef/DataFusion.jl), providing high-performance SQL query capabilities to Julia.
+
+## Overview
+
+The DataFusion C API bridges the gap between DataFusion's Rust implementation and other programming languages by providing a standard C interface. This enables:
+
+- **Language Bindings**: Easy integration with Julia, Python, Node.js, and other languages
+- **Performance**: Direct access to DataFusion's optimized query engine
+- **Memory Safety**: Proper resource management with clear ownership semantics
+- **Cross-Platform**: Works on macOS, Linux, and Windows
+
+## Language Bindings
+
+- **[DataFusion.jl](https://github.com/vustef/DataFusion.jl)**: Official Julia bindings providing high-level Julia API
 
 ## Features
 
 - Create and manage DataFusion execution contexts
 - Register CSV files as tables
-- Execute SQL queries
-- Access query results
+- Execute SQL queries with full DataFusion SQL support
+- Access query results with batch-based processing
 - Memory-safe C API with proper resource management
+- Comprehensive error handling
 
 ## Building
 
 ### Prerequisites
 
-- Rust (1.70 or later)
-- Cargo
+- **Rust 1.70+**: Required for building DataFusion
+- **Cargo**: Rust's package manager
+- **C Compiler**: GCC, Clang, or MSVC for testing (optional)
 
 ### Build the Library
 
 ```bash
-# Build in release mode (recommended)
+# Build in release mode (recommended for production)
 cargo build --release
 
-# Build in debug mode
+# Build in debug mode (for development)
 cargo build
 ```
 
 The built library will be available in:
-- Release: `target/release/libdatafusion_c_api.dylib` (macOS) / `libdatafusion_c_api.so` (Linux) / `datafusion_c_api.dll` (Windows)
-- Debug: `target/debug/libdatafusion_c_api.dylib` (macOS) / `libdatafusion_c_api.so` (Linux) / `datafusion_c_api.dll` (Windows)
+- **Release**: `target/release/libdatafusion_c_api.dylib` (macOS) / `libdatafusion_c_api.so` (Linux) / `datafusion_c_api.dll` (Windows)
+- **Debug**: `target/debug/libdatafusion_c_api.dylib` (macOS) / `libdatafusion_c_api.so` (Linux) / `datafusion_c_api.dll` (Windows)
 
 ### Generate C Headers
 
-The C header file is automatically generated during the build process and will be available at `include/datafusion.h`.
+The C header file is automatically generated during the build process using `cbindgen` and will be available at `include/datafusion.h`.
+
+## Quick Start with Julia
+
+The easiest way to use this library is through the Julia bindings:
+
+```bash
+# Clone both repositories
+git clone https://github.com/vustef/datafusion-c-api.git
+git clone https://github.com/vustef/DataFusion.jl.git
+
+# Build the C API
+cd datafusion-c-api
+cargo build --release
+
+# Set up and test Julia package
+cd ../DataFusion.jl
+julia --project=. -e "using Pkg; Pkg.instantiate()"
+julia --project=. examples/basic_usage.jl
+```
+
+For detailed Julia usage, see the [DataFusion.jl documentation](https://github.com/vustef/DataFusion.jl).
 
 ## API Reference
 

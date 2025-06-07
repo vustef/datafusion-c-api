@@ -8,12 +8,17 @@ name = "datafusion_c_api"
 crate-type = ["cdylib", "staticlib"]
 
 [dependencies]
-datafusion = "44.0.0"
+datafusion = "45.0.0"
+datafusion_iceberg = "0.7.0"
+iceberg-rust = "0.7.0"
+iceberg-sql-catalog = "0.7.0"
 tokio = { version = "1.0", features = ["rt", "rt-multi-thread"] }
-arrow = "53.0.0"
-arrow-array = "53.0.0"
-arrow-schema = "53.0.0"
+arrow = { version = "54.2.1", features = ["prettyprint"] }
+arrow-array = "54.2.1"
+arrow-schema = "54.2.1"
 libc = "0.2"
+object_store = "0.12.1"
+anyhow = "1.0"
 
 [build-dependencies]
 cbindgen = "0.24"

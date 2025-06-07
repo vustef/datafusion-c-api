@@ -8,6 +8,7 @@ The DataFusion C API bridges the gap between DataFusion's Rust implementation an
 
 - **Language Bindings**: Easy integration with Julia, Python, Node.js, and other languages
 - **Performance**: Direct access to DataFusion's optimized query engine
+- **Iceberg Support**: Full Apache Iceberg table format support with partitioning capabilities (powered by [iceberg-rust](https://github.com/JanKaul/iceberg-rust))
 - **Memory Safety**: Proper resource management with clear ownership semantics
 - **Cross-Platform**: Works on macOS, Linux, and Windows
 
@@ -19,6 +20,7 @@ The DataFusion C API bridges the gap between DataFusion's Rust implementation an
 
 - Create and manage DataFusion execution contexts
 - Register CSV files as tables
+- Full Apache Iceberg table format support with schema definition and partitioning (via [iceberg-rust](https://github.com/JanKaul/iceberg-rust))
 - Execute SQL queries with full DataFusion SQL support
 - Access query results with batch-based processing
 - Memory-safe C API with proper resource management
